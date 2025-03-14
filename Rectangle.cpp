@@ -4,15 +4,7 @@
 
 using namespace std;
 
-void RectAsk();
-void DrawRectangle(int height, int width);
-
-class Rectangle {
-
-	void RectAsk();
-};
-
-void RectAsk() {
+void Rectangle::RectAsk() {
 
 	int height;
 	int width;
@@ -32,7 +24,7 @@ void RectAsk() {
 	
 }
 
-void DrawRectangle(int height, int width) {
+void Rectangle::DrawRectangle(int height, int width) {
 
 	for (int i = 0; i < height; i++) {
 

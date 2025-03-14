@@ -4,15 +4,7 @@
 using namespace std;
 
 
-void TriAsk();
-void DrawTriangle(int height);
-
-class Triangle
-{
-	void TriAsk();
-};
-
-void TriAsk() {
+void Triangle::TriAsk() {
 
 	int userHeight;
 
@@ -28,7 +20,7 @@ void TriAsk() {
 
 }
 
-void DrawTriangle(int height) {
+void Triangle::DrawTriangle(int height) {
 
 	for (int i = 0; i < height + 1; i++) {
 

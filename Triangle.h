@@ -3,8 +3,21 @@
 
 #include <iostream>
 
-void TriAsk();
-void DrawTriangle(int height);
+class Triangle
+{
+private:
+	int userNum;
+	char userSymbol;
+
+public:
+	void TriAsk();
+	void AskSymbol();
+	void DrawTriangle(int height);
+	void DrawandTriangle();
+	void DrawpoundTriangle();
+	void DrawplusTriangle();
+	void SymbolSwitch(char symbol);
+};
 
 
 #endif 

@@ -27,12 +27,18 @@
     <ClCompile Include="Rectangle.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Diamond.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Diamond.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
