@@ -7,8 +7,12 @@
 
 class Rectangle {
 private: 
-	int userNum;
+	int height;
+	int width;
+	int symHeight;
+	int symWidth;
 	char userSymbol;
+
 
 public:
 

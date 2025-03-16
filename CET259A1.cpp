@@ -6,8 +6,8 @@
 
 int main()
 {
-    //Triangle tri;
-    //tri.TriAsk();
+    Triangle tri;
+    tri.TriAsk();
     
     
     //Rectangle rect;

@@ -6,9 +6,6 @@ using namespace std;
 
 void Rectangle::RectAsk() {
 
-	int height;
-	int width;
-
 	do {
 		cout << "Please Enter the Height and Width of your Rectangle (2 - 50)" << endl;
 		cout << "Height: "; cin >> height;
@@ -30,6 +27,107 @@ void Rectangle::DrawRectangle(int height, int width) {
 
 		for (int j = 0; j < width; j++) {
 			cout << setw(3) << "*";
+		}
+
+		cout << endl;
+
+	}
+
+	AskSymbol();
+}
+
+void Rectangle::AskSymbol() {
+
+	cout << " Would you like to draw a Rectangle in one of these symbols? ( & , # , + ) ";
+	cin >> userSymbol;
+	SymbolSwitch(userSymbol);
+}
+
+void Rectangle::SymbolSwitch(char symbol) {
+
+	if (symbol == '&' || symbol == '#' || symbol == '+') {
+
+		switch (symbol)
+		{
+		case '&':
+		{
+			DrawandRectangle();
+			break;
+		}
+
+		case '#':
+		{
+			DrawpoundRectangle();
+			break;
+		}
+
+		case '+':
+		{
+			DrawplusRectangle();
+			break;
+		}
+
+		}
+	}
+	else {
+		cout << "Please submit a valid symbol ( & , # , + ), Please try Again...\n";
+		AskSymbol();
+	}
+}
+
+void Rectangle::DrawandRectangle() {
+
+	do {
+		cout << "Please input the number height and width of your Rectangle (5 - 50) :" << endl;
+		cout << "Height: "; cin >> symHeight;
+		cout << "Width: "; cin >> symWidth;
+
+	} while (symHeight <= 2 && symHeight >= 50 && symWidth <= 2 && symWidth >= 50);
+
+	for (int i = 0; i < symHeight; i++) {
+
+		for (int j = 0; j < symWidth; j++) {
+			cout << setw(3) << "&";
+		}
+
+		cout << endl;
+
+	}
+}
+
+void Rectangle::DrawpoundRectangle() {
+
+	do {
+		cout << "Please input the number height and width of your Rectangle (5 - 50) :" << endl;
+		cout << "Height: "; cin >> symHeight;
+		cout << "Width: "; cin >> symWidth;
+
+	} while (symHeight <= 2 && symHeight >= 50 && symWidth <= 2 && symWidth >= 50);
+
+	for (int i = 0; i < symHeight; i++) {
+
+		for (int j = 0; j < symWidth; j++) {
+			cout << setw(3) << "#";
+		}
+
+		cout << endl;
+
+	}
+}
+
+void Rectangle::DrawplusRectangle() {
+
+	do {
+		cout << "Please input the number height and width of your Rectangle (5 - 50) :" << endl;
+		cout << "Height: "; cin >> symHeight;
+		cout << "Width: "; cin >> symWidth;
+
+	} while (symHeight <= 2 && symHeight >= 50 && symWidth <= 2 && symWidth >= 50);
+
+	for (int i = 0; i < symHeight; i++) {
+
+		for (int j = 0; j < symWidth; j++) {
+			cout << setw(3) << "+";
 		}
 
 		cout << endl;
