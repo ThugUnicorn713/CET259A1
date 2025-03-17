@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include "SaveManager.h"
 #include <iostream>
 #include <iomanip>
 
@@ -18,7 +19,7 @@ void Rectangle::RectAsk() {
 
 	
 	DrawRectangle(height, width);
-	
+	SaveAsk();
 }
 
 void Rectangle::DrawRectangle(int height, int width) {
@@ -32,8 +33,7 @@ void Rectangle::DrawRectangle(int height, int width) {
 		cout << endl;
 
 	}
-
-	AskSymbol();
+	
 }
 
 void Rectangle::AskSymbol() {
@@ -41,6 +41,41 @@ void Rectangle::AskSymbol() {
 	cout << " Would you like to draw a Rectangle in one of these symbols? ( & , # , + ) ";
 	cin >> userSymbol;
 	SymbolSwitch(userSymbol);
+}
+
+void Rectangle::SaveAsk() {
+
+	SaveManager sm;
+
+	while (true) {
+
+		cout << "Would you like to save this shape? (Y/N)" << endl;
+		cin >> saveAnswer;
+
+		if (saveAnswer == "Y" || saveAnswer == "y") {
+
+			int id;
+
+			cout << "Please Enter ID for this Triangle: ";
+			cin >> id;
+
+
+			sm.SaveShape(id, "Rectangle", height, width);
+			sm.SaveToFile();
+			break;
+
+		}
+		else if (saveAnswer == "N" || saveAnswer == "n") {
+
+			AskSymbol();
+			break;
+		}
+		else {
+			cout << "Please Enter Y for Yes or N for No." << endl;
+		}
+
+	}
+
 }
 
 void Rectangle::SymbolSwitch(char symbol) {

@@ -14,7 +14,8 @@ private:
 	char userSymbol;
 
 public:
-	Triangle(int h);
+	//Triangle(int h) { userNum = h; }
+	//Triangle() { userNum = 0; }
 	
 	void TriAsk();
 	void AskSymbol();

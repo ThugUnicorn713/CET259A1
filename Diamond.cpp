@@ -1,4 +1,5 @@
 #include "Diamond.h"
+#include "SaveManager.h"
 #include <iostream>
 //#include <conio.h>
 using namespace std;
@@ -14,7 +15,7 @@ void Diamond::DiaAsk() {
 
 
 	DrawDiamond(userNum);
-
+	SaveAsk();
 
 }
 
@@ -23,6 +24,40 @@ void Diamond::AskSymbol() {
 	cout << " Would you like to draw a Diamond in one of these symbols? ( & , # , + ) ";
 	cin >> userSymbol;
 	SymbolSwitch(userSymbol);
+}
+
+void Diamond::SaveAsk() {
+
+	SaveManager sm;
+
+	while (true) {
+
+		cout << "Would you like to save this shape? (Y/N)" << endl;
+		cin >> saveAnswer;
+
+		if (saveAnswer == "Y" || saveAnswer == "y") {
+
+			int id;
+
+			cout << "Please create ID for this Diamond: ";
+			cin >> id;
+
+
+			sm.SaveShape(id, "Diamond", userNum);
+			sm.SaveToFile();
+			break;
+
+		}
+		else if (saveAnswer == "N" || saveAnswer == "n") {
+
+			AskSymbol();
+			break;
+		}
+		else {
+			cout << "Please Enter Y for Yes or N for No." << endl;
+		}
+
+	}
 }
 
 void Diamond::DrawDiamond(int height) {
@@ -54,7 +89,6 @@ void Diamond::DrawDiamond(int height) {
 		cout << endl;
 	}
 
-	AskSymbol();
 	
 }
 

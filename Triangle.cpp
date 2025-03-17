@@ -1,11 +1,12 @@
 #include "Triangle.h"
+#include "SaveManager.h"
 #include <iostream>
 
 using namespace std;
 
-Triangle::Triangle(int h) {
-	userNum = h;  //might work or maybe try height
-}
+//Triangle::Triangle(int h) {
+	//userNum = h;  //might work or maybe try height
+//}
 
 void Triangle::TriAsk() {
 
@@ -17,11 +18,14 @@ void Triangle::TriAsk() {
 
 
 	DrawTriangle(userNum);
-
+	SaveAsk();
 
 }
 
 void Triangle::SaveAsk() {
+
+	SaveManager sm;
+	int loadNum;
 	
 	while (true) {
 
@@ -29,17 +33,34 @@ void Triangle::SaveAsk() {
 		cin >> saveAnswer;
 
 		if (saveAnswer == "Y" || saveAnswer == "y") {
-			SaveTriangle(); // save from save manager
+
+			int id; 
+			
+			cout << "Please Enter ID for this Triangle: ";
+			cin >> id;
+			
+
+			sm.SaveShape(id, "Triangle", userNum);
+			sm.SaveToFile();
+			break;
+			
 		}
 		else if (saveAnswer == "N" || saveAnswer == "n") {
 
 			AskSymbol();
+			break;
 		}
 		else {
-			cout << "Please Enter Y for yes or N for no." << endl;
+			cout << "Please Enter Y for Yes or N for No." << endl;
 		}
 
 	}
+
+	cout << "what is the ID of your shape? : " << endl; //Load logic
+	cin >> loadNum;
+
+	sm.LoadShape(loadNum);
+	sm.LoadFromFile();
 }
 
 void Triangle::AskSymbol() {

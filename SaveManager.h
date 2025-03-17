@@ -15,12 +15,19 @@ using namespace std;
 class SaveManager
 {
 private:
-	static map<int, string> shapeMap;
+	map<int*, string> shapeMap;
+	map<int*, int> shapeHeights;
+	map<int*, int> shapeWidths;
 
 public:
-	static void SaveShape(int id, const string& type, int height, int width = 0);
-	static void LoadShape(int id);
-	static void SaveToMem(int id, const string& type);
+	 void SaveShape(int id, const string& type, int height, int width = 0);
+	 void LoadShape(int id);
+	 void SaveToFile();
+	 void LoadFromFile();
+
+
+	~SaveManager();
+
 };
 #endif
 
