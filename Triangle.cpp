@@ -23,11 +23,10 @@ void Triangle::TriAsk() {
 }
 
 void Triangle::SaveAsk() {
-
-	SaveManager sm;
-	int loadNum;
 	
 	while (true) {
+
+		SaveManager sm;
 
 		cout << "Would you like to save this shape? (Y/N)" << endl;
 		cin >> saveAnswer;
@@ -55,12 +54,6 @@ void Triangle::SaveAsk() {
 		}
 
 	}
-
-	cout << "what is the ID of your shape? : " << endl; //Load logic
-	cin >> loadNum;
-
-	sm.LoadShape(loadNum);
-	sm.LoadFromFile();
 }
 
 void Triangle::AskSymbol() {

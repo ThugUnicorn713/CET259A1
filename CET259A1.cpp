@@ -3,20 +3,15 @@
 #include "Rectangle.h"
 #include "Diamond.h"
 #include "SaveManager.h"
+#include "MenuSystem.h"
 
 
 int main()
-{
-    //Triangle tri;
-    //tri.TriAsk();
+{   
+    MenuSystem ms;
+    ms.CallMenu();
     
     
-    //Rectangle rect;
-    //rect.RectAsk();
-
-    Diamond dia;
-    dia.DiaAsk();
-
     return 0;
 
 }

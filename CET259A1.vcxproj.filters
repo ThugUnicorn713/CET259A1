@@ -33,6 +33,9 @@
     <ClCompile Include="SaveManager.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="MenuSystem.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Triangle.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -133,12 +133,14 @@
   <ItemGroup>
     <ClCompile Include="CET259A1.cpp" />
     <ClCompile Include="Diamond.cpp" />
+    <ClCompile Include="MenuSystem.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diamond.h" />
+    <ClInclude Include="MenuSystem.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="SaveManager.h" />
     <ClInclude Include="Triangle.h" />
