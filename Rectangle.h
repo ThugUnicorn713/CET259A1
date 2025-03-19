@@ -16,9 +16,11 @@ private:
 	int symWidth;
 	char userSymbol;
 	string saveAnswer;
+	SaveManager* sm;
 
 
 public:
+	Rectangle(SaveManager* manager);
 
 	void RectAsk();
 	void AskSymbol();

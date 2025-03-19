@@ -8,10 +8,13 @@
 using namespace std;
 
 
-void MenuSystem::CallMenu() {
-	this->sm;
-	sm.LoadFromFile();
+MenuSystem::MenuSystem() {
+	 sm = new SaveManager(this); 
+}
 
+void MenuSystem::CallMenu() {
+
+	cout << "  " << endl;
 	cout << "Welcome to your Shape Drawing Program!" << endl;
 	cout << "   " << endl;
 	cout << "Please Choose an Option from the Menu below." << endl;
@@ -21,17 +24,16 @@ void MenuSystem::CallMenu() {
 	cout << "1) Create Shape" << endl;
 	cout << "2) Modify an Already Existing Shape" << endl;
 	cout << "3) Delete a Saved Shape" << endl;
-	cout << "4) Exit Program" << endl;
+	cout << "4) Generate a Random Shape" << endl;
+	cout << "5) Exit Program" << endl;
 	cin >> userInput;
 
 	MenuSwitch(userInput);
 }
 
 void MenuSystem::MenuSwitch(int userInput) {
-	
-	this->sm;
 
-	if (userInput == 1 || userInput == 2 || userInput == 3 || userInput == 4) {
+	if (userInput == 1 || userInput == 2 || userInput == 3 || userInput == 4 || userInput == 5) {
 
 		switch (userInput) {
 
@@ -46,21 +48,21 @@ void MenuSystem::MenuSwitch(int userInput) {
 
 				if (createInput == 1) {
 
-					Rectangle rect;
+					Rectangle rect(sm);
 					rect.RectAsk();
 					break;
 
 				}
 				else if (createInput == 2) {
 
-					Triangle tri;
+					Triangle tri(sm);
 					tri.TriAsk();
 					break;
 
 				}
 				else if (createInput == 3) {
 
-					Diamond dia;
+					Diamond dia(sm);
 					dia.DiaAsk();
 					break;
 
@@ -80,8 +82,7 @@ void MenuSystem::MenuSwitch(int userInput) {
 			cout << "what is the ID of your shape? : " << endl;
 			cin >> loadNum;
 
-			sm.LoadShape(loadNum);
-			sm.LoadFromFile();
+			sm->LoadShape(loadNum);
 
 
 			cout << "What would you like to modify Shape?\n";
@@ -92,13 +93,13 @@ void MenuSystem::MenuSwitch(int userInput) {
 
 			switch (modifyNum) {
 			case 1:
-				sm.MoveShape(loadNum);
+				sm->MoveShape(loadNum);
 				break;
 			case 2:
-				sm.ResizeShape(loadNum);
+				sm->ResizeShape(loadNum);
 				break;
 			case 3:
-				sm.ChangeShape(loadNum);
+				sm->ChangeShape(loadNum);
 				break;
 			default:
 				cout << "Invalid choice. Returning to menu...\n";
@@ -106,33 +107,33 @@ void MenuSystem::MenuSwitch(int userInput) {
 			}
 				break;
 
-			case 3:
+		case 3:
 
-				int deleteID;
+			int deleteID;
 
-				cout << "What is the ID of the shape you want to delete?" << endl;
-				cin >> deleteID;
+			cout << "What is the ID of the shape you want to delete?" << endl;
+			cin >> deleteID;
 
-				sm.DeleteShape(deleteID);
-				break;
+			sm->DeleteShape(deleteID);
+			break;
 
-			case 4:
+		case 4:
 
-				cout << "Goodbye Friend!" << endl;
-				exit(0);
-				break;
+			sm->RandomShape();
 
+		case 5: 
 
-
-
-
-			}
-		}
-		else {
-			cout << "Please enter a Valid option..." << endl;
-			CallMenu();
+			cout << "Goodbye Friend!" << endl;
+			exit(0);
+			break;
 
 		}
+
+	}else {
+		cout << "Please enter a Valid option..." << endl;
+		CallMenu();
+
+	}
 
 	
 	

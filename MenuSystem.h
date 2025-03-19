@@ -6,14 +6,18 @@
 
 using namespace std;
 
+class SaveManager;
+
 class MenuSystem
 {
 private:
 	int userInput;
 	int createInput;
-	SaveManager sm;
+	SaveManager* sm;
 
 public:
+	MenuSystem();
+	~MenuSystem() { delete sm; } 
 
 	void CallMenu();
 	void MenuSwitch(int userInput);

@@ -5,6 +5,10 @@
 
 using namespace std;
 
+Rectangle::Rectangle(SaveManager* manager) {
+	sm = manager;  // Use existing SaveManager instead of creating a new one
+}
+
 void Rectangle::RectAsk() {
 
 	do {
@@ -45,8 +49,6 @@ void Rectangle::AskSymbol() {
 
 void Rectangle::SaveAsk() {
 
-	SaveManager sm;
-
 	while (true) {
 
 		cout << "Would you like to save this shape? (Y/N)" << endl;
@@ -60,8 +62,8 @@ void Rectangle::SaveAsk() {
 			cin >> id;
 
 
-			sm.SaveShape(id, "Rectangle", height, width);
-			sm.SaveToFile();
+			sm->SaveShape(id, "Rectangle", height, width);
+			sm->SaveToFile();
 			break;
 
 		}

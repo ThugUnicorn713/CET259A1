@@ -4,9 +4,9 @@
 
 using namespace std;
 
-//Triangle::Triangle(int h) {
-	//userNum = h;  //might work or maybe try height
-//}
+Triangle::Triangle(SaveManager* manager) {
+	sm = manager;  // Use existing SaveManager instead of creating a new one
+}
 
 void Triangle::TriAsk() {
 
@@ -26,8 +26,6 @@ void Triangle::SaveAsk() {
 	
 	while (true) {
 
-		SaveManager sm;
-
 		cout << "Would you like to save this shape? (Y/N)" << endl;
 		cin >> saveAnswer;
 
@@ -39,8 +37,8 @@ void Triangle::SaveAsk() {
 			cin >> id;
 			
 
-			sm.SaveShape(id, "Triangle", userNum);
-			sm.SaveToFile();
+			sm->SaveShape(id, "Triangle", userNum);
+			sm->SaveToFile();
 			break;
 			
 		}

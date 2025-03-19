@@ -12,10 +12,10 @@ private:
 	int userNum;
 	string saveAnswer;
 	char userSymbol;
+	SaveManager* sm;
 
 public:
-	//Triangle(int h) { userNum = h; }
-	//Triangle() { userNum = 0; }
+	Triangle(SaveManager* manager);
 	
 	void TriAsk();
 	void AskSymbol();

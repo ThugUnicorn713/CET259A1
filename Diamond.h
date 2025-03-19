@@ -12,8 +12,9 @@ private:
 	int userNum;
 	char userSymbol;
 	string saveAnswer;
+	SaveManager* sm;
 public:
-	
+	Diamond(SaveManager* manager);
 
 	void DiaAsk();
 	void AskSymbol();

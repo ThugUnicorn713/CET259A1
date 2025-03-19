@@ -5,6 +5,10 @@
 using namespace std;
 
 
+Diamond::Diamond(SaveManager* manager) {
+	sm = manager;  // Use existing SaveManager
+}
+
 void Diamond::DiaAsk() {
 
 	do {
@@ -28,8 +32,6 @@ void Diamond::AskSymbol() {
 
 void Diamond::SaveAsk() {
 
-	SaveManager sm;
-
 	while (true) {
 
 		cout << "Would you like to save this shape? (Y/N)" << endl;
@@ -43,8 +45,8 @@ void Diamond::SaveAsk() {
 			cin >> id;
 
 
-			sm.SaveShape(id, "Diamond", userNum);
-			sm.SaveToFile();
+			sm->SaveShape(id, "Diamond", userNum);
+			sm->SaveToFile();
 			break;
 
 		}
