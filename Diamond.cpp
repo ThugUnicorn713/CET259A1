@@ -1,13 +1,14 @@
 #include "Diamond.h"
 #include "SaveManager.h"
 #include <iostream>
-//#include <conio.h>
 using namespace std;
 
 
-Diamond::Diamond(SaveManager* manager) {
+/*Diamond::Diamond(SaveManager* manager) {
 	sm = manager;  // Use existing SaveManager
-}
+}*/
+
+Diamond::Diamond(SaveManager* manager) : Shape(manager) {}
 
 void Diamond::DiaAsk() {
 
@@ -15,19 +16,35 @@ void Diamond::DiaAsk() {
 		cout << "Please input the number height of your Diamond (5 - 50) :";
 		cin >> userNum;
 
-	} while (userNum >= 50 && userNum <= 5); // add validation 
+		if (userNum > 50 || userNum < 5) {
+			cout << " Sorry that input was invalid. Please enter values between 2 and 50." << endl;
+		}
+
+	} while (userNum > 50 || userNum < 5); 
 
 
 	DrawDiamond(userNum);
-	SaveAsk();
+	AskSymbol();
 
 }
 
 void Diamond::AskSymbol() {
 
-	cout << " Would you like to draw a Diamond in one of these symbols? ( & , # , + ) ";
-	cin >> userSymbol;
-	SymbolSwitch(userSymbol);
+	char difSymbol;
+
+	cout << "Would you like a different symbol? (Y/N)";
+	cin >> difSymbol;
+
+	if (difSymbol == 'Y' || difSymbol == 'y') {
+
+		cout << " Which symbol? ( & , # , + ) ";
+		cin >> userSymbol;
+		SymbolSwitch(userSymbol);
+
+	}
+	else {
+		SaveAsk();
+	}
 }
 
 void Diamond::SaveAsk() {
@@ -90,8 +107,6 @@ void Diamond::DrawDiamond(int height) {
 
 		cout << endl;
 	}
-
-	
 }
 
 void Diamond::SymbolSwitch(char symbol) {
@@ -161,6 +176,8 @@ void Diamond::DrawandDiamond() {
 
 		cout << endl;
 	}
+
+	SaveAsk();
 }
 
 void Diamond::DrawpoundDiamond() {
@@ -191,6 +208,7 @@ void Diamond::DrawpoundDiamond() {
 
 		cout << endl;
 	}
+	SaveAsk();
 }
 
 void Diamond::DrawplusDiamond() {
@@ -221,4 +239,6 @@ void Diamond::DrawplusDiamond() {
 
 		cout << endl;
 	}
+
+	SaveAsk();
 }

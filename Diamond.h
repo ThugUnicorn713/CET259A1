@@ -3,16 +3,17 @@
 
 #include <iostream>
 #include "SaveManager.h"
+#include "Shape.h"
 
 using namespace std;
 
-class Diamond
+class Diamond : public Shape
 {
 private:
 	int userNum;
 	char userSymbol;
 	string saveAnswer;
-	SaveManager* sm;
+	//SaveManager* sm;
 public:
 	Diamond(SaveManager* manager);
 

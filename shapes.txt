@@ -1,1 +1,2 @@
-2 Triangle 8 0
+3 Rectangle 8 8
+8 Diamond 9 0

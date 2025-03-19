@@ -3,16 +3,17 @@
 
 #include <iostream>
 #include "SaveManager.h"
+#include "Shape.h"
 
 using namespace std;
 
-class Triangle
+class Triangle : public Shape
 {
 private:
 	int userNum;
 	string saveAnswer;
 	char userSymbol;
-	SaveManager* sm;
+	//SaveManager* sm;
 
 public:
 	Triangle(SaveManager* manager);

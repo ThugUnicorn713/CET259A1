@@ -4,9 +4,11 @@
 
 using namespace std;
 
-Triangle::Triangle(SaveManager* manager) {
+/*Triangle::Triangle(SaveManager* manager) {
 	sm = manager;  // Use existing SaveManager instead of creating a new one
-}
+}*/
+
+Triangle::Triangle(SaveManager* manager) : Shape(manager) {}
 
 void Triangle::TriAsk() {
 
@@ -14,11 +16,15 @@ void Triangle::TriAsk() {
 		cout << "Please input the number height of your Triangle (5 - 50) :";
 		cin >> userNum;
 
-	} while (userNum >= 50 && userNum <= 5); // add validation 
+		if (userNum > 50 || userNum < 5) {
+			cout << " Sorry that input was invalid. Please enter values between 2 and 50." << endl;
+		}
+
+	} while (userNum > 50 || userNum < 5); 
 
 
 	DrawTriangle(userNum);
-	SaveAsk();
+	AskSymbol();
 
 }
 
@@ -55,10 +61,21 @@ void Triangle::SaveAsk() {
 }
 
 void Triangle::AskSymbol() {
+	char difSymbol;
 
-	cout << " Would you like to draw this Triangle in one of these symbols? ( & , # , + ) ";
-	cin >> userSymbol;
-	SymbolSwitch(userSymbol);
+	cout << "Would you like a different symbol? (Y/N)";
+	cin >> difSymbol;
+
+	if (difSymbol == 'Y' || difSymbol == 'y') {
+
+		cout << " Which symbol? ( & , # , + ) ";
+		cin >> userSymbol;
+		SymbolSwitch(userSymbol);
+
+	}
+	else {
+		SaveAsk();
+	}
 }
 
 void Triangle::DrawTriangle(int height) {
@@ -125,6 +142,7 @@ void Triangle::DrawandTriangle() {
 		cout << endl;
 	}
 
+	SaveAsk();
 }
 
 void Triangle::DrawpoundTriangle() {
@@ -142,6 +160,7 @@ void Triangle::DrawpoundTriangle() {
 		cout << endl;
 	}
 
+	SaveAsk();
 }
 
 void Triangle::DrawplusTriangle() {
@@ -159,5 +178,6 @@ void Triangle::DrawplusTriangle() {
 		cout << endl;
 	}
 
+	SaveAsk();
 }
 

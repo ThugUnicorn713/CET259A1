@@ -5,9 +5,10 @@
 
 using namespace std;
 
-Rectangle::Rectangle(SaveManager* manager) {
+/* Rectangle::Rectangle(SaveManager* manager) {
 	sm = manager;  // Use existing SaveManager instead of creating a new one
-}
+}*/
+Rectangle::Rectangle(SaveManager* manager) : Shape(manager) {}
 
 void Rectangle::RectAsk() {
 
@@ -19,11 +20,12 @@ void Rectangle::RectAsk() {
 		if (height < 2 || height > 50 || width < 2 || width > 50) {
 			cout << " Sorry that input was invalid. Please enter values between 2 and 50." << endl; //validation is weird
 		}
-	} while (height <= 2 && height >= 50 && width <= 2 && width >= 50);
+	} while (height < 2 || height > 50 || width < 2 || width > 50);
 
 	
 	DrawRectangle(height, width);
-	SaveAsk();
+	AskSymbol();
+	
 }
 
 void Rectangle::DrawRectangle(int height, int width) {
@@ -42,9 +44,23 @@ void Rectangle::DrawRectangle(int height, int width) {
 
 void Rectangle::AskSymbol() {
 
-	cout << " Would you like to draw a Rectangle in one of these symbols? ( & , # , + ) ";
-	cin >> userSymbol;
-	SymbolSwitch(userSymbol);
+	char difSymbol;
+
+	cout << "Would you like a different symbol? (Y/N)";
+	cin >> difSymbol;
+
+	if (difSymbol == 'Y' || difSymbol == 'y') {
+
+		cout << " Which symbol? ( & , # , + ) ";
+		cin >> userSymbol;
+		SymbolSwitch(userSymbol);
+
+	}
+	else {
+		SaveAsk();
+	}
+
+	
 }
 
 void Rectangle::SaveAsk() {
@@ -58,7 +74,7 @@ void Rectangle::SaveAsk() {
 
 			int id;
 
-			cout << "Please Enter ID for this Triangle: ";
+			cout << "Please Enter ID for this Rectangle: ";
 			cin >> id;
 
 
@@ -130,6 +146,7 @@ void Rectangle::DrawandRectangle() {
 		cout << endl;
 
 	}
+	SaveAsk();
 }
 
 void Rectangle::DrawpoundRectangle() {
@@ -150,6 +167,8 @@ void Rectangle::DrawpoundRectangle() {
 		cout << endl;
 
 	}
+
+	SaveAsk();
 }
 
 void Rectangle::DrawplusRectangle() {
@@ -170,4 +189,6 @@ void Rectangle::DrawplusRectangle() {
 		cout << endl;
 
 	}
+
+	SaveAsk();
 }
